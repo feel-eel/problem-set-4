@@ -196,12 +196,9 @@ public class ProblemSet4 {
 					y = n.charAt(i) - '0';
 					if (Character.isDigit(z)) {
 						num = num * 10 + y;
-						//System.out.print(num);
 					} else if (Character.isLetter(z)){
 						count = count + num;
-						System.out.println("c");
 					}
-					System.out.println(z);
 				}
 				else if (x == true && !Character.isLetter(z)) {
 					count = count + n.charAt(i)- '0';
