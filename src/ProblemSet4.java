@@ -24,16 +24,27 @@ public class ProblemSet4 {
 	public static void main(String[] args) {
 		ProblemSet4 ps4 = new ProblemSet4();
 		
-		System.out.println(ps4.surroundMe("<<>>", "abc"));
-		System.out.println(ps4.endsMeet("basketball", 3));
+		//System.out.println(ps4.surroundMe("<<>>", "abc"));
+		//System.out.println(ps4.endsMeet("basketball", 3));
+		//System.out.println(ps4.middleMan("candy"));
+		//System.out.println(ps4.doubleVision("a"));
+		//System.out.println(ps4.centered("qwerty", "qrweee"));
+		//System.out.println(ps4.upOrDown(12.2, 'c'));
+		//System.out.println(ps4.countMe("one more batch of sample words", 'h'));
+		//System.out.println(ps4.isNotEqual("is not not is not"));
+		//System.out.println(ps4.triplets("abbbccccd"));
+		//System.out.println(ps4.addMe("a123b456c789", false));
+		
+		System.out.println(ps4.surroundMe("[[]]", "xyz"));
+		System.out.println(ps4.endsMeet("qwerty", 2));
 		System.out.println(ps4.middleMan("candy"));
-		System.out.println(ps4.doubleVision("a"));
-		System.out.println(ps4.centered("qwerty", "qrweee"));
-		System.out.println(ps4.upOrDown(12.2, 'c'));
-		System.out.println(ps4.countMe("one more batch of sample words", 'h'));
-		System.out.println(ps4.isNotEqual("is not not is not"));
-		System.out.println(ps4.triplets("aaa bbb"));
-		System.out.println(ps4.addMe("a123b456c789", true));
+		System.out.println(ps4.doubleVision("qwerty"));
+		System.out.println(ps4.centered("candy", "and"));
+		System.out.println(ps4.upOrDown(12.7, 'r'));
+		System.out.println(ps4.countMe("sample", 'e'));
+		System.out.println(ps4.isNotEqual("isnotis"));
+		System.out.println(ps4.triplets("abbbccccd"));
+		System.out.println(ps4.addMe("a123b456c789", false));
 	}
 	
 	
@@ -136,13 +147,15 @@ public class ProblemSet4 {
 		int is = 0;
 		int not = 0;
 		for(int i = 0; i < n.length() - 2; i++) {
-			String x = n.substring(i, i+2);
 			String y = n.substring(i, i+3);
+			if (y.equals("not")) {
+				not++;
+			}
+		}
+		for (int i = 0; i < n.length() - 1; i++) {
+			String x = n.substring(i, i+2);
 			if (x.equals("is")) {
 				is++;
-			}
-			else if (y.equals("not")) {
-				not++;
 			}
 		}
 		if (is == not) {
@@ -176,24 +189,22 @@ public class ProblemSet4 {
 				if (n.charAt(i) == ' ') {
 					return -1;
 				}
-				int y = n.charAt(i);
-				if (x == false && !Character.isLetter(y)) {
+				int y = 0;
+				char z = n.charAt(i);
+				if (x == false) {
 					int num = 0;
-					for(int j = 0; j < n.length(); j++) {
-						char other = n.charAt(i);
-						if (!Character.isLetter(other)) {
-							num = num * 10 + other;
-						} else {
-							break;
-						}
+					y = n.charAt(i) - '0';
+					if (Character.isDigit(z)) {
+						num = num * 10 + y;
+						//System.out.print(num);
+					} else if (Character.isLetter(z)){
+						count = count + num;
+						System.out.println("c");
 					}
-					count = count + num;	
+					System.out.println(z);
 				}
-				else if (x == true && !Character.isLetter(y)) {
-					System.out.println(count);
-					System.out.println(y);
-					System.out.println(y + count);
-					count = count + n.charAt(i);
+				else if (x == true && !Character.isLetter(z)) {
+					count = count + n.charAt(i)- '0';
 				}
 			}
 			return count;
