@@ -185,6 +185,7 @@ public class ProblemSet4 {
 				return -1;
 			}
 			int count = 0;
+			int num = 0;
 			for(int i = 0; i < n.length(); i++) {
 				if (n.charAt(i) == ' ') {
 					return -1;
@@ -192,12 +193,13 @@ public class ProblemSet4 {
 				int y = 0;
 				char z = n.charAt(i);
 				if (x == false) {
-					int num = 0;
 					y = n.charAt(i) - '0';
 					if (Character.isDigit(z)) {
 						num = num * 10 + y;
-					} else if (Character.isLetter(z)){
+					} 
+					if (Character.isLetter(z) || i == (n.length() - 1)){
 						count = count + num;
+						num = 0;
 					}
 				}
 				else if (x == true && !Character.isLetter(z)) {
